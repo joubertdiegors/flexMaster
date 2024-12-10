@@ -1,0 +1,27 @@
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Sistema</strong>
+            <small class="text-muted">Agora</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+        <!-- A mensagem será inserida aqui dinamicamente -->
+        </div>
+    </div>
+</div>
+
+{% block extra_scripts %}
+<script>
+    function showToast(message, title = 'Sistema') {
+        // Defina o título e a mensagem do toast
+        const toastElement = document.getElementById('liveToast');
+        toastElement.querySelector('.toast-header strong').innerText = title;
+        toastElement.querySelector('.toast-body').innerText = message;
+
+        // Cria uma nova instância do toast e mostra
+        const toast = new bootstrap.Toast(toastElement);
+        toast.show();
+    }
+</script>
+{% endblock %}

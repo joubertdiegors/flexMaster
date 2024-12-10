@@ -1,0 +1,83 @@
+1 - crie um arquivo chamado .gitignore (todos os diretorios ou arquivos listados no arquivo não serão sincronizados junto ao projeto ao git)
+
+2 - git init (este comando iniciarilazará o git no projeto)
+
+3 - git status (comando para verificar o status dos envios)
+
+4 - git config user.name "Diego Ramos" (Configurar os dados para a conta git)
+    git config user.email "jdrsjdrsoares@gmail.com"
+    
+    ** Para fazer essa config a nível global **
+    git config --global user.name "Diego Ramos"
+    git config --global user.email "jdrsjdrsoares@gmail.com"
+
+5 - git add . (adiciona todos os arquivos da pasta para monitoramento, com excessão dos que estão no gitignore.)
+    git add nome.extensão (adiciona somente o arquivo informado)
+
+6 - git commit -m "meu primeiro commit" (adiciona um comentário sobre as alterações que foram feitas)
+    git push -u origin master (Enviar os arquivos para o git "primeiro envio deve conter o nome do repositorio e o branch)
+    git push (os demais envios não precisam do nome do repositorio e branch)
+
+7 - Consulta o histórico de commits com filtros:
+    git log (Mostra o histórico de commits)
+    git log -3 (ele mostra os últimos 3 logs)
+    git log --oneline (ele tras o histórico mas em 1 linha)
+    git config core.pager cat (modifica para que o histórico não venha quebrado em varias linhas e fique bloqueado no prompt)
+    git config core.pager less (modifica para que o histórico venha quebrado em varias linhas e fique bloqueado no prompt)
+    
+    Pesquisas por data:
+    git log --before"2020-05-15" (pesquisa os logs antes desta data)
+    git log --after'2020-05-15" (pesquisa os logs após esta data)
+    git log --since"2 days ago" (pesquisa os logs de até 2 dias atrás)
+    
+    Pesquisas por Autor:
+    git log --author="name"
+
+    Mais opções:
+    git help log
+
+8 - Voltando no tempo com o git
+    git checkout "núm. do log" (Volta para o comit que você informou)
+    git checkout master (Desfaz o checout, volta para o que estava avançado)
+
+9 - Comandos diversos
+    git mv programa1.html programa2.html (renomear arquivo, pode ser utilizado para dir tb.)
+    git rm programa2.html (Remover um arquivo, pode ser utilizado para dir tb.)
+    gif diff --staged (compara o arquivo que acabou de add, o que foi feito nele.)
+    gif diff 06b54bd (compara a diferença entre o commit atual e o que foi especificado)
+    git diff b42ac6d..4623586 (compara a diferença entre os 2 commits informados)
+
+10 - Disfazendo coisas
+    git commit --amend -m "Adicionando uma nova linha" (corrigir o comit que acabou de fazer ou add um arquivo ao ultimo commit ou altera uma info no ultimo commit)
+    git restore --staged (desfaz o git add "arquivox", tira ele do staged)
+    git checkout programa3.html (desfaz as alterações que fez dentro do arquivo x, como um ctrl+z)
+    git reset HEAD --hard (desfaz "sobescreve" as alterações que fez em vários arquivos até o último commit)
+    git reset HEAD^ --hard (Voltar para o último commit)
+    git checkout -- nome.txt (desfaz as alterações que fez somente no arquivo especificado)
+    git revert num_do_commit (desfaz um commit, mas mantém ele no histórico informando que um commit foi desfeito)
+    git reset HEAD~1 (desfaz o ultimo comit e exclui o histórico completamente. o ~1 significa a quantidade de commits que quer voltar)
+
+Branches = "Uma ramificação do projeto"
+
+11 - git branch (Consulta as branch que existem no projeto)
+
+12 - git branch nomeX (cria um novo branch)
+
+13 - git checkout funcionalidadeA (especifica em qual branch quer trabalhar)
+
+14 - git branch -d funcionalidadeA (deleta um branch)
+
+14 - git merge funcionalidadeB (Mescla 2 Branches)
+
+15 - git checkout -b funcionalidadeC (Cria o novo Branch e já seta ele como o branch ativo)
+
+16 - git clone /diretorio . (para clonar um projeto, entra na pasta pelo terminal e executa esse código. o . no final quer dizer que ele deve copiar tudo para o diretorio atual)
+    após clonar o projeto deve-se configurar um novo usuário normalmente.
+
+17 - git fetch (baixa os arquivos sem realizar o merge)
+
+18 - git pull (baixa os arquivos realizando o merge)
+
+19 - git tag v1.0 (Cria uma versão pronta a ser utilizada do projeto "versão 1.1, 1.2 2.0 e etc...)
+
+20 - git remote -v (Verifica o endereço do fetch e push)
