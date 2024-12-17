@@ -80,22 +80,42 @@ class ProductForm(forms.ModelForm):
         ]
 
         widgets = {
-            'barcode': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter barcode'}),
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter product name'}),
-            'volume': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter net volume'}),
+            'barcode': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ex: 123456789'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ex: Arroz Branco Longos Grãos'}),
+            'volume': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ex: 1 (para 1kg), 500 (para 500g)'}),
             'package_unit': forms.Select(attrs={'class': 'form-control'}),
             'brand': forms.Select(attrs={'class': 'form-control'}),
             'country': forms.Select(attrs={'class': 'form-control'}),
             'sales_unit': forms.Select(attrs={'class': 'form-control'}),
-            'net_weight': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter net weight'}),
-            'gross_weight': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter gross weight'}),
+            'net_weight': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Ex: 1000 (para 1kg), 500 (para 500g)'}),
+            'gross_weight': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Ex: 1000 (para 1kg), 500 (para 500g)'}),
             'stock_control': forms.CheckboxInput(attrs={'class': 'form-check-input', 'role': 'switch', 'id': 'stockControlSwitch'}),
-            'minimum_stock': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter minimum stock'}),
-            'maximum_stock': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter maximum stock'}),
-            'selling_price': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter selling price'}),
+            'minimum_stock': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Ex: 50'}),
+            'maximum_stock': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Ex: 100'}),
+            'selling_price': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Ex: 12,99'}),
             'image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter description'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Somente se for necessário'}),
             'is_active': forms.CheckboxInput(attrs={'class': 'form-check-input', 'role': 'switch', 'id': 'isActiveSwitch'})
+        }
+
+        labels = {
+            'barcode': 'Código de Barras',
+            'name': 'Nome do Produto',
+            'volume': 'Volume Líquido',
+            'package_unit': 'Unidade da Embalagem',
+            'brand': 'Marca',
+            'country': 'País de Origem',
+            'category': 'Categorias',
+            'sales_unit': 'Unidade de Venda',
+            'net_weight': 'Peso Líquido',
+            'gross_weight': 'Peso Bruto',
+            'stock_control': 'Controle de Estoque',
+            'minimum_stock': 'Estoque Mínimo',
+            'maximum_stock': 'Estoque Máximo',
+            'selling_price': 'Preço de Venda',
+            'image': 'Imagem do Produto',
+            'description': 'Descrição',
+            'is_active': 'Ativo'
         }
 
     def __init__(self, *args, **kwargs):
