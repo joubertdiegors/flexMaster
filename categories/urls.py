@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path('administration/categories/list/', views.CategoryListView.as_view(), name='category_list'),
     path('administration/categories/json/', views.category_list_json, name='category_list_json'),

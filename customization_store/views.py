@@ -12,6 +12,12 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 from .forms import HeaderLogoForm, NavbarLogoForm, FaviconForm, ProductImageForm, CustomerImageForm, SupplierImageForm, BannerForm
 from . import models, forms
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from .models import GlobalSettings
+
+def maintenance_view(request):
+    settings = GlobalSettings.objects.first()
+    message = settings.maintenance_message if settings else "Manutenção em andamento."
+    return render(request, 'maintenance.html', {'message': message})
 
 class CustomizationHomeView(LoginRequiredMixin, PermissionRequiredMixin, View):
     template_name = 'customization_home.html'

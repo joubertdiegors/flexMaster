@@ -63,6 +63,7 @@ MIDDLEWARE = [
 
     'app.middleware.AdminPermissionMiddleware',
     'cart.middleware.TransferCartMiddleware',
+    'customization_store.middlewares.MaintenanceMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'

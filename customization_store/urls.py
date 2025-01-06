@@ -1,7 +1,10 @@
 from django.urls import path
 from . import views
+from .views import maintenance_view
 
 urlpatterns = [
+    path('maintenance/', maintenance_view, name='maintenance'),
+
     path('administration/customization/', views.CustomizationHomeView.as_view(), name='customization_home'),
 
     path('administration/customization/header/', views.UploadHeaderLogoView.as_view(), name='upload_header_logo'),

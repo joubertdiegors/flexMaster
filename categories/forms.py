@@ -15,3 +15,9 @@ class CategoryForm(forms.ModelForm):
             'parent': 'Categoria Pai',
             'image': 'Imagem da Categoria',
         }
+
+        def clean_parent(self):
+            parent = self.cleaned_data['parent']
+            if parent and parent == self.instance:
+                raise forms.ValidationError("A categoria não pode ser pai dela mesma.")
+            return parent

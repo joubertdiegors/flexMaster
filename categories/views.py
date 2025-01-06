@@ -35,23 +35,25 @@ class CategoryCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView
     model = models.Category
     form_class = forms.CategoryForm
     template_name = 'category_list.html'
-    success_url = reverse_lazy('category_list')
+    success_url = reverse_lazy('categories:list')
     permission_required = 'categories.add_category'
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        messages.success(self.request, 'Categoria criada com sucesso!')
+        return response
 
 class CategoryUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = models.Category
     template_name = 'category_list.html'
     form_class = forms.CategoryForm
-    success_url = reverse_lazy('category_list')
+    success_url = reverse_lazy('categories:list')
     permission_required = 'categories.change_category'
 
 class CategoryDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = models.Category
-    success_url = reverse_lazy('category_list')
+    success_url = reverse_lazy('categories:list')
     permission_required = 'categories.delete_category'
 
     def delete(self, request, *args, **kwargs):

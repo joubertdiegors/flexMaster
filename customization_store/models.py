@@ -10,6 +10,20 @@ from django.db.models.signals import pre_save
 
 from products.models import Brand, Product
 
+class GlobalSettings(models.Model):
+    site_under_maintenance = models.BooleanField(default=False, verbose_name="Site em manutenção")
+    maintenance_message = models.TextField(
+        default="Estamos em manutenção. Voltaremos em breve!",
+        verbose_name="Mensagem de manutenção",
+    )    
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='maintenance_created_by', null=True, blank=True, on_delete=models.PROTECT, verbose_name="Criado por")
+    updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='maintenance_updated_by', null=True, blank=True, on_delete=models.PROTECT, verbose_name="Atualizado por")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Criado em")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Atualizado em")
+
+    def __str__(self):
+        return "Configurações Globais"
+
 class Banner(models.Model):
     title = models.CharField(max_length=200, unique=True)
     description = models.TextField(blank=True, null=True)

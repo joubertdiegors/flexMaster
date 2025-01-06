@@ -207,14 +207,14 @@ class ProductDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView)
     
 def product_search(request):
     query = request.GET.get('q', '')
-    print(f"Search query: {query}")  # Debugging the search query
+    print(f"Search query: {query}")
 
     if query:
         products = models.Product.objects.filter(name__icontains=query)[:10]
         if not products.exists():
-            print(f"No products found for query: {query}")  # Debugging no results
+            print(f"No products found for query: {query}")
         results = [{'id': product.id, 'name': product.name} for product in products]
-        print(f"Products found: {results}")  # Debugging the results
+        print(f"Products found: {results}")
     else:
         results = []
         print("No query provided, returning empty list.")

@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 
 
-@login_required(login_url='login')
 def home(request):
     return render(request, 'home.html')
 
