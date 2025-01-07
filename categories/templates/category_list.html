@@ -309,7 +309,7 @@ Lista de Categorias
         document.getElementById('category_image').value = '';
 
         // Atualizar a URL de ação do formulário de edição
-        document.getElementById('editCategoryForm').action = `/categories/${categoryId}/update/`;
+        document.getElementById('editCategoryForm').action = `/administration/categories/${categoryId}/update/`;
 
         // Mostrar o modal de edição
         const editCategoryModal = new bootstrap.Modal(document.getElementById('editCategoryModal'));
@@ -340,20 +340,24 @@ Lista de Categorias
       const form = event.target;
       const categoryId = form.querySelector('#delete_category_id').value;
 
-      fetch(`/categories/${categoryId}/delete/`, {
+      // Atualize a URL da requisição com o ID da categoria
+      const url = `/administration/categories/${categoryId}/delete/`; // Certifique-se de que a URL está correta
+
+      fetch(url, {
         method: 'DELETE',
         headers: {
           'X-CSRFToken': form.querySelector('[name="csrfmiddlewaretoken"]').value,
-          'Content-Type': 'application/json' // Adicione Content-Type se necessário
+          'Content-Type': 'application/json'
         }
       })
       .then(response => {
         if (response.ok) {
-          // A resposta é OK, você pode fazer algo, como recarregar a página ou remover a categoria da interface
-          location.reload(); // Recarregar a página para refletir a exclusão
+          // Se a exclusão for bem-sucedida, recarregar a página ou remover a categoria da interface
+          location.reload();
         } else {
           return response.json().then(data => {
-            alert(`Erro ao excluir a categoria: ${data.error || 'Erro desconhecido.'}`);
+            location.reload();
+            //alert(`Erro ao excluir a categoria: ${data.error || 'Erro desconhecido.'}`);
           });
         }
       })
